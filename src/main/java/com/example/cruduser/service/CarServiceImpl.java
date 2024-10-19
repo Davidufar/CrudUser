@@ -1,8 +1,7 @@
-package com.example.CrudUser.Service;
+package com.example.cruduser.service;
 
-import com.example.CrudUser.DAO.CarRepo;
-import com.example.CrudUser.Service.CarService;
-import com.example.CrudUser.Model.Car;
+import com.example.cruduser.dao.CarRepo;
+import com.example.cruduser.model.Car;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,7 +33,7 @@ public class CarServiceImpl implements CarService{
         }
     }
 
-    public ResponseEntity<Car> getCarById(@PathVariable long id){
+    public ResponseEntity<Car> getCarById( long id){
         Optional<Car> carData = carRepo.findById(id);
 
         if(carData.isPresent()){
@@ -43,14 +42,14 @@ public class CarServiceImpl implements CarService{
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 @Override
-    public ResponseEntity<Car> addCarToUserById(@RequestBody Car car){
+    public ResponseEntity<Car> addCarToUserById( Car car){
         Car carObj = carRepo.save(car);
 
         return new ResponseEntity<>(carObj,HttpStatus.OK);
     }
 
 
-    public ResponseEntity<Car> updateCarById(@PathVariable long id,@RequestBody Car newCarData ){
+    public ResponseEntity<Car> updateCarById( long id, Car newCarData ){
         Optional<Car> oldCarData = carRepo.findById(id);
 
         if(oldCarData.isPresent()){

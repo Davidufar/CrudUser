@@ -1,4 +1,4 @@
-package com.example.CrudUser.Model;
+package com.example.cruduser.model;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -21,6 +21,7 @@ public class User {
     private String name;
 
     private int age;
+    private int SSN;
 
     @OneToMany(mappedBy = "user")
     private List<Car> cars;

@@ -1,7 +1,7 @@
-package com.example.CrudUser.Controller;
+package com.example.cruduser.controller;
 
-import com.example.CrudUser.Model.User;
-import com.example.CrudUser.Service.UserService;
+import com.example.cruduser.model.User;
+import com.example.cruduser.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +21,7 @@ public class UserController {
     public ResponseEntity<List<User>> getAllUsers(){
         return userService.getAllUsers();
     }
-    @GetMapping("/getUserById/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<User> getUserById(@PathVariable long id){
         return userService.getUserById(id);
     }
@@ -31,11 +31,11 @@ public class UserController {
         return userService.addUser(user);
     }
 
-    @PostMapping("/updateUserById/{id}")
+    @PostMapping("/{id}")
     public ResponseEntity<User> updateUserById(@PathVariable long id,@RequestBody User newUserData ){
         return userService.updateUserById(id,newUserData);
     }
-    @DeleteMapping("/deleteUserById/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<HttpStatus> deleteUserById(@PathVariable long id){
        return userService.deleteUserById(id);
     }

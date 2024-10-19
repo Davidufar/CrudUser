@@ -1,6 +1,6 @@
-package com.example.CrudUser.DAO;
+package com.example.cruduser.dao;
 
-import com.example.CrudUser.Model.Car;
+import com.example.cruduser.model.Car;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

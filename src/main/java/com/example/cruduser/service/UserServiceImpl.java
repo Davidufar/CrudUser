@@ -1,13 +1,11 @@
-package com.example.CrudUser.Service;
+package com.example.cruduser.service;
 
-import com.example.CrudUser.DAO.UserRepo;
-import com.example.CrudUser.Model.User;
+import com.example.cruduser.dao.UserRepo;
+import com.example.cruduser.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +31,7 @@ public class UserServiceImpl implements  UserService{
         }
     }
 
-    public ResponseEntity<User> getUserById(@PathVariable long id){
+    public ResponseEntity<User> getUserById( long id){
         Optional<User> userData = userRepo.findById(id);
 
         if(userData.isPresent()){
@@ -43,14 +41,14 @@ public class UserServiceImpl implements  UserService{
     }
 
 
-    public ResponseEntity<User> addUser(@RequestBody User user){
+    public ResponseEntity<User> addUser( User user){
         User userObj = userRepo.save(user);
 
         return new ResponseEntity<>(userObj,HttpStatus.OK);
     }
 
 
-    public ResponseEntity<User> updateUserById(@PathVariable long id,@RequestBody User newUserData ){
+    public ResponseEntity<User> updateUserById( long id, User newUserData ){
         Optional<User> oldUserData = userRepo.findById(id);
 
         if(oldUserData.isPresent()){
@@ -66,7 +64,7 @@ public class UserServiceImpl implements  UserService{
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    public ResponseEntity<HttpStatus> deleteUserById(@PathVariable long id){
+    public ResponseEntity<HttpStatus> deleteUserById( long id){
         userRepo.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
 

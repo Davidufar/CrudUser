@@ -1,8 +1,7 @@
-package com.example.CrudUser.Controller;
+package com.example.cruduser.controller;
 
-import com.example.CrudUser.Model.Car;
-import com.example.CrudUser.Model.User;
-import com.example.CrudUser.Service.CarService;
+import com.example.cruduser.model.Car;
+import com.example.cruduser.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +21,7 @@ public class CarController {
     public ResponseEntity<List<Car>> getAllCars(){
         return carService.getAllCars();
     }
-    @GetMapping("/getCarById/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Car> getCarById(@PathVariable long id){
         return carService.getCarById(id);
     }
@@ -32,11 +31,11 @@ public class CarController {
         return carService.addCarToUserById(car);
     }
 
-    @PostMapping("/updateCarById/{id}")
+    @PostMapping("/{id}")
     public ResponseEntity<Car> updateCarById(@PathVariable long id,@RequestBody Car newCarData ){
         return carService.updateCarById(id,newCarData);
     }
-    @DeleteMapping("/deleteCarById/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<HttpStatus> deleteCarById(@PathVariable long id){
         return carService.deleteCarById(id);
     }

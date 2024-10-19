@@ -1,4 +1,4 @@
-package com.example.CrudUser.Model;
+package com.example.cruduser.model;
 
 import jakarta.persistence.*;
 import lombok.*;
