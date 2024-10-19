@@ -13,7 +13,7 @@ import lombok.*;
 public class Passport {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long serialNumber;
+    private long id;
 
     private String name;
     private String surName;
@@ -21,6 +21,7 @@ public class Passport {
     private int dateOfMaking;
     private int expirationDate;
 
+    private long serialNumber;
 
 
 }
