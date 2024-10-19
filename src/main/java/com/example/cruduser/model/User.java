@@ -25,4 +25,8 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<Car> cars;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "Passports_id")
+    private Passport passport;
 }
