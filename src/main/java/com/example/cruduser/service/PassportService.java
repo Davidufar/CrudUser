@@ -9,15 +9,15 @@ import java.util.List;
 
 
 public interface PassportService {
-    public PassportDTO getAllPassports();
+    public List<PassportDTO> getAllPassports();
 
     public PassportDTO getPassportById(long id);
 
 
-    public PassportDTO addPassportToUserById( Passport passport);
+    public ResponseEntity<HttpStatus> addPassport( Passport passport);
 
 
-    public PassportDTO updateCarById( long id, Passport newPassportData );
+    public ResponseEntity<HttpStatus> updatePassportById( long id, Passport newPassportData );
 
     public ResponseEntity<HttpStatus> deletePassportById( long id);
 }

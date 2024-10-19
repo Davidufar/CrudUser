@@ -16,7 +16,7 @@ import java.util.Optional;
 public class PassportServiceImpl implements  PassportService{
     @Autowired
     private PassportRepo passportRepo;
-    public PassportDTO getAllPassports(){
+    public List<PassportDTO> getAllPassports(){
         try{
             List<Passport> passportList = new ArrayList<>();
             passportRepo.findAll().forEach(passportList::add);
@@ -32,7 +32,7 @@ public class PassportServiceImpl implements  PassportService{
         }
     }
 
-    public PassportDTO getUserById( long id){
+    public PassportDTO getPassportById( long id){
         Optional<Passport> passportData = passportRepo.findById(id);
 
         if(passportData.isPresent()){
@@ -44,31 +44,34 @@ public class PassportServiceImpl implements  PassportService{
     }
 
 
-    public ResponseEntity<User> addUser( User user){
-        User userObj = userRepo.save(user);
+    public ResponseEntity<HttpStatus> addPassport( Passport passport){
+        Passport passportObj = passportRepo.save(passport);
 
-        return new ResponseEntity<>(userObj,HttpStatus.OK);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 
-    public ResponseEntity<User> updateUserById( long id, User newUserData ){
-        Optional<User> oldUserData = userRepo.findById(id);
+    public ResponseEntity<HttpStatus> updatePassportById( long id, Passport newPassportData ){
+        Optional<Passport> oldPassportData = passportRepo.findById(id);
 
-        if(oldUserData.isPresent()){
-            User updatedUserData = oldUserData.get();
-            updatedUserData.setName(newUserData.getName());
-            updatedUserData.setAge(newUserData.getAge());
+        if(oldPassportData.isPresent()){
+            Passport updatedPassportData = oldPassportData.get();
+            updatedPassportData.setName(newPassportData.getName());
+            updatedPassportData.setSurName(newPassportData.getSurName());
+            updatedPassportData.setSerialNumber(newPassportData.getSerialNumber());
+            updatedPassportData.setDateOfMaking(newPassportData.getDateOfMaking());
+            updatedPassportData.setExpirationDate(newPassportData.getExpirationDate());
 
-            User userObj = userRepo.save(updatedUserData);
-            return new ResponseEntity<>(userObj, HttpStatus.OK );
+            Passport passportObj = passportRepo.save(updatedPassportData);
+            return new ResponseEntity<>(HttpStatus.OK );
 
         }
 
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    public ResponseEntity<HttpStatus> deleteUserById( long id){
-        userRepo.deleteById(id);
+    public ResponseEntity<HttpStatus> deletePassportById( long id){
+        passportRepo.deleteById(id);
         return new ResponseEntity<>(HttpStatus.OK);
 
     }
