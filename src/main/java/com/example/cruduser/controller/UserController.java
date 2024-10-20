@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -27,12 +28,12 @@ public class UserController {
     }
 
     @PostMapping("/addUser")
-    public ResponseEntity<User> addUser(@RequestBody User user){
+    public ResponseEntity<User> addUser(@RequestBody @Valid User user){
         return userService.addUser(user);
     }
 
     @PostMapping("/{id}")
-    public ResponseEntity<User> updateUserById(@PathVariable long id,@RequestBody User newUserData ){
+    public ResponseEntity<User> updateUserById(@PathVariable long id,@RequestBody @Valid User newUserData ){
         return userService.updateUserById(id,newUserData);
     }
     @DeleteMapping("/{id}")

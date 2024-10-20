@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -27,12 +28,12 @@ public class CarController {
     }
 
     @PostMapping("/addCar")
-    public ResponseEntity<Car> addCarToUserById(@RequestBody Car car){
+    public ResponseEntity<Car> addCarToUserById(@RequestBody @Valid Car car){
         return carService.addCarToUserById(car);
     }
 
     @PostMapping("/{id}")
-    public ResponseEntity<Car> updateCarById(@PathVariable long id,@RequestBody Car newCarData ){
+    public ResponseEntity<Car> updateCarById(@PathVariable long id,@RequestBody @Valid Car newCarData ){
         return carService.updateCarById(id,newCarData);
     }
     @DeleteMapping("/{id}")
