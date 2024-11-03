@@ -1,4 +1,4 @@
-package com.example.cruduser.model;
+package com.example.cruduser.dto;
 
 
 

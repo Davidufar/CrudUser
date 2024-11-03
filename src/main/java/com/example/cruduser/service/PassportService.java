@@ -1,7 +1,8 @@
 package com.example.cruduser.service;
 
+import com.example.cruduser.data.PassportData;
 import com.example.cruduser.model.Passport;
-import com.example.cruduser.model.PassportDTO;
+import com.example.cruduser.dto.PassportDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -9,9 +10,9 @@ import java.util.List;
 
 
 public interface PassportService {
-    public List<PassportDTO> getAllPassports();
+    public List<PassportData> getAllPassports();
 
-    public PassportDTO getPassportById(long id);
+    public PassportData getPassportById(long id);
 
 
     public ResponseEntity<HttpStatus> addPassport( Passport passport);

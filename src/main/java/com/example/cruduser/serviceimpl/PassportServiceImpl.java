@@ -1,9 +1,13 @@
-package com.example.cruduser.service;
+package com.example.cruduser.serviceimpl;
 
-import com.example.cruduser.converter.PassportDTOConverter;
+
 import com.example.cruduser.dao.PassportRepo;
+
+import com.example.cruduser.data.PassportData;
+import com.example.cruduser.mapper.PassportToPassportDataMapper;
 import com.example.cruduser.model.Passport;
-import com.example.cruduser.model.PassportDTO;
+import com.example.cruduser.dto.PassportDTO;
+import com.example.cruduser.service.PassportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,27 +18,26 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Component
-public class PassportServiceImpl implements  PassportService{
-    private final PassportDTOConverter passportDTOConverter;
+public class PassportServiceImpl implements PassportService {
+    @Autowired
+   PassportToPassportDataMapper passportToPassportDataMapper = new PassportToPassportDataMapper();
 
     @Autowired
     private PassportRepo passportRepo;
 
-    public PassportServiceImpl(PassportDTOConverter passportDTOConverter) {
-        this.passportDTOConverter = passportDTOConverter;
-    }
 
-    public List<PassportDTO> getAllPassports(){
+
+    public List<PassportData> getAllPassports(){
         return passportRepo.findAll()
                 .stream()
-                .map(passportDTOConverter)
+                .map(passportToPassportDataMapper)
                 .collect(Collectors.toList());
 
     }
 
-    public PassportDTO getPassportById( long id){
+    public PassportData getPassportById(long id){
         return passportRepo.findById(id)
-                .map(passportDTOConverter)
+                .map(passportToPassportDataMapper)
                 .orElseThrow();
 
     }

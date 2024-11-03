@@ -1,7 +1,8 @@
-package com.example.cruduser.service;
+package com.example.cruduser.serviceimpl;
 
 import com.example.cruduser.dao.CarRepo;
 import com.example.cruduser.model.Car;
+import com.example.cruduser.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
-public class CarServiceImpl implements CarService{
+public class CarServiceImpl implements CarService {
 
     @Autowired
     private CarRepo carRepo;

@@ -1,7 +1,8 @@
-package com.example.cruduser.service;
+package com.example.cruduser.serviceimpl;
 
 import com.example.cruduser.dao.UserRepo;
 import com.example.cruduser.model.User;
+import com.example.cruduser.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
-public class UserServiceImpl implements  UserService{
+public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepo userRepo;
     public ResponseEntity<List<User>> getAllUsers(){
