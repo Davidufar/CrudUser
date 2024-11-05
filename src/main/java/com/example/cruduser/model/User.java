@@ -28,6 +28,9 @@ public class User {
     @NotNull(message = "age should not be null")
     private int age;
 
+    @NotNull(message = "email should not be null")
+    private String email;
+
     @NotNull(message = "Cars should not be null")
     @OneToMany(mappedBy = "user")
     private List<Car> cars;

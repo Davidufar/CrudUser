@@ -8,6 +8,7 @@ import com.example.cruduser.mapper.PassportToPassportDataMapper;
 import com.example.cruduser.model.Passport;
 import com.example.cruduser.dto.PassportDTO;
 import com.example.cruduser.service.PassportService;
+import com.example.cruduser.validator.EmailValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +26,8 @@ public class PassportServiceImpl implements PassportService {
     @Autowired
     private PassportRepo passportRepo;
 
+    @Autowired
+    private EmailValidator emailValidator ;
 
 
     public List<PassportData> getAllPassports(){
@@ -44,9 +47,14 @@ public class PassportServiceImpl implements PassportService {
 
 
     public ResponseEntity<HttpStatus> addPassport( Passport passport){
-        Passport passportObj = passportRepo.save(passport);
+        if(emailValidator.validate(passport.getEmail())){
+            Passport passportObj = passportRepo.save(passport);
 
-        return new ResponseEntity<>(HttpStatus.OK);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
+        else{
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
 
 

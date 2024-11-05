@@ -23,13 +23,18 @@ public class Passport {
 
     @NotNull(message = "name should not be null")
     private String name;
+
     @NotNull(message = "surname should not be null")
     private String surName;
 
     @NotNull(message = "Date Of Making should not be null")
     private int dateOfMaking;
+
     @NotNull(message = "Expiration Date should not be null")
     private int expirationDate;
+
+    @NotNull(message = "email should not be null")
+    private String email;
 
     @NotNull(message = "Serial Number should not be null")
     private long serialNumber;
