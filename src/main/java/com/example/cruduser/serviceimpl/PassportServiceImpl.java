@@ -26,8 +26,7 @@ public class PassportServiceImpl implements PassportService {
     @Autowired
     private PassportRepo passportRepo;
 
-    @Autowired
-    private EmailValidator emailValidator ;
+
 
 
     public List<PassportData> getAllPassports(){
@@ -47,7 +46,7 @@ public class PassportServiceImpl implements PassportService {
 
 
     public ResponseEntity<HttpStatus> addPassport( Passport passport){
-        if(emailValidator.validate(passport.getEmail())){
+        if(EmailValidator.validate(passport.getEmail())){
             Passport passportObj = passportRepo.save(passport);
 
             return new ResponseEntity<>(HttpStatus.OK);
