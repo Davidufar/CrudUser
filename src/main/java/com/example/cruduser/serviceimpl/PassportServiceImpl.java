@@ -68,6 +68,7 @@ public class PassportServiceImpl implements PassportService {
             updatedPassportData.setSerialNumber(newPassportData.getSerialNumber());
             updatedPassportData.setDateOfMaking(newPassportData.getDateOfMaking());
             updatedPassportData.setExpirationDate(newPassportData.getExpirationDate());
+            updatedPassportData.setEmail(newPassportData.getEmail());
 
             Passport passportObj = passportRepo.save(updatedPassportData);
             return new ResponseEntity<>(HttpStatus.OK );

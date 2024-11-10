@@ -57,7 +57,7 @@ public class CarServiceImpl implements CarService {
             Car updatedCarData = oldCarData.get();
             updatedCarData.setModelName(newCarData.getModelName());
             updatedCarData.setYearOfProduction(newCarData.getYearOfProduction());
-
+            updatedCarData.setUser(newCarData.getUser());
             Car carObj = carRepo.save(updatedCarData);
             return new ResponseEntity<>(carObj, HttpStatus.OK );
 

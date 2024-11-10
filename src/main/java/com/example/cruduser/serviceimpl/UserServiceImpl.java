@@ -56,6 +56,9 @@ public class UserServiceImpl implements UserService {
             User updatedUserData = oldUserData.get();
             updatedUserData.setName(newUserData.getName());
             updatedUserData.setAge(newUserData.getAge());
+            updatedUserData.setEmail(newUserData.getEmail());
+            updatedUserData.setCars(newUserData.getCars());
+            updatedUserData.setPassport(newUserData.getPassport());
 
             User userObj = userRepo.save(updatedUserData);
             return new ResponseEntity<>(userObj, HttpStatus.OK );
